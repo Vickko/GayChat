@@ -5,6 +5,7 @@ Simple, elegant web chat application.
 基于 Web 的在线聊天社交平台
 ### 架构
 
+```
 client
 ├── vue
 ├── ...
@@ -14,6 +15,7 @@ server
 ├── Python
 ├── ...
 └── Mysql
+```
 
 ### TODO:
 

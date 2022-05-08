@@ -17,6 +17,52 @@ server
 └── Mysql
 ```
 
+### 环境及依赖版本
+
+#### 前端
+
+> 一个众所周知的事实是，node 开发对依赖版本极为敏感，经常出现一些与依赖相关的臭名昭著的问题。随着时间推移, 除文档中注明的、开发时最终所使用的特定版本号可以保证可用外，其余各依赖不同的版本组合均有可能变为可用/不可用。因此，如有需要尝试某些依赖的其他版本，请在安装相关环境时自行测试。
+
+从 nvm 在 github 的仓库下载并安装 nvm，使用 nvm 管理 node 版本。
+
+nvm 0.39.1
+
+node v16.15.0
+
+npm 8.9.0
+
+**注意：npm 镜像源也会对依赖问题造成影响，开发时使用如下镜像源（原淘宝镜像，国内裸连速度较高）**
+```
+npm config set home https://npmmirror.com
+npm config set registry https://registry.npmmirror.com
+```
+```
+npm ls -g
+/Users/vickko/.nvm/versions/node/v16.15.0/lib
+├── @vue/cli@5.0.4
+├── corepack@0.10.0
+└── npm@8.9.0
+```
+```
+npm ls
+gaychat-client@0.1.0 /Users/vickko/Documents/Code/nosync.nosync/GayChat/src/client/gaychat-client
+├── @babel/core@7.17.10
+├── @babel/eslint-parser@7.17.0
+├── @vue/cli-plugin-babel@5.0.4
+├── @vue/cli-plugin-eslint@5.0.4
+├── @vue/cli-plugin-router@5.0.4
+├── @vue/cli-service@5.0.4
+├── @vue/eslint-config-standard@6.1.0
+├── core-js@3.22.4
+├── eslint-plugin-import@2.26.0
+├── eslint-plugin-node@11.1.0
+├── eslint-plugin-promise@5.2.0
+├── eslint-plugin-vue@8.7.1
+├── eslint@7.32.0
+├── vue-router@4.0.15
+└── vue@3.2.33
+```
+
 ## TODO:
 
 1. 添加大致功能需求文档

@@ -2,7 +2,7 @@
     <img src="https://i.jpg.dog/file/jpg-dog/de6d6ec5db96ba888b4638f2385c0f8c.png" alt="GayChat" width="240">
 </h1>
 <p align="center">
-Simple, elegant web chat application based on [SocketIO](https://socket.io/).
+Simple, elegant web chat application based on <a href="https://socket.io/">Socket.IO</a>.
 
 </p>
 <p align="center">

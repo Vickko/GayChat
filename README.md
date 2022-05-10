@@ -1,9 +1,18 @@
-# GayChat
+<h1 align="center">
+    <img src="https://i.jpg.dog/file/jpg-dog/de6d6ec5db96ba888b4638f2385c0f8c.png" alt="GayChat" width="240">
+</h1>
+<p align="center">
+Simple, elegant web chat application based on <a href="https://socket.io/">Socket.IO</a>.
 
-Simple, elegant web chat application.
+</p>
+<p align="center">
+  <a href="https://github.com/Vickko/GayChat/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-WTFPL-brightgreen"></a>
+  <a href="https://cn.vuejs.org/"><img src="https://img.shields.io/badge/vue-2.0%2B-blueviolet"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.6%2B-informational"></a>
+</p>
 
-基于 Web 的在线聊天社交平台
-### 架构
+
+## 架构
 
 ```
 client
@@ -13,13 +22,15 @@ client
 
 server
 ├── Python
+├── Alibaba Cloud
+├── Redis
 ├── ...
 └── Mysql
 ```
 
-### 环境及依赖版本
+## 环境及依赖版本
 
-#### 前端
+### 前端
 
 > 一个众所周知的事实是，node 开发对依赖版本极为敏感，经常出现一些与依赖相关的臭名昭著的问题。随着时间推移, 除文档中注明的、开发时最终所使用的特定版本号可以保证可用外，其余各依赖不同的版本组合均有可能变为可用/不可用。因此，如有需要尝试某些依赖的其他版本，请在安装相关环境时自行测试。
 
@@ -63,17 +74,31 @@ gaychat-client@0.1.0 /Users/vickko/Documents/Code/nosync.nosync/GayChat/src/clie
 └── vue@3.2.33
 ```
 
-## TODO:
-
-1. 添加大致功能需求文档
-2. 完善功能需求细分子项
-
-### 功能
-
+## 功能和需求
+### Overall:
 1. 用户系统 （注册、登录、登出、删除）
 2. 用户资料 （Profile、status）
 3. 好友关系，群聊
+ - 支持添加好友功能及好友在线状态查看
 4. 聊天系统 （私聊，群聊，发送文件）
+ - 实现任意用户间的即时通讯和聊天记录加密存储
+ - 支持通讯过程中进行多种文件格式的传递
+ - 支持群聊功能
+ - 支持在聊天过程中发送表情
+ - ~~支持对v佬进行光速开盒~~
+
+## TODO:
+1. 添加大致功能需求文档
+2. 完善功能需求细分子项
+
+### 前端：
+1. 开始UI/UX概念原型设计
+2. 完成 login API 逻辑部分
+
+### 后端
+1. 完善文档中后端部分技术栈内容
+2. 依据文档所述技术栈，在开发服务器上初始化环境
+3. 完成 login API
 
 ## API
 
@@ -106,3 +131,6 @@ gaychat-client@0.1.0 /Users/vickko/Documents/Code/nosync.nosync/GayChat/src/clie
     }
 }
 ```
+
+
+

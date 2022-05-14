@@ -13,7 +13,10 @@
       >
         <a-input v-model:value="formState.username" placeholder="用户名">
           <template #prefix>
-            <UserOutlined class="site-form-item-icon" style="color: rgba(0, 0, 0, 0.25)"/>
+            <UserOutlined
+              class="site-form-item-icon"
+              style="color: rgba(0, 0, 0, 0.25)"
+            />
           </template>
         </a-input>
       </a-form-item>
@@ -24,7 +27,10 @@
       >
         <a-input-password v-model:value="formState.password" placeholder="密码">
           <template #prefix>
-            <LockOutlined class="site-form-item-icon" style="color: rgba(0, 0, 0, 0.25)"/>
+            <LockOutlined
+              class="site-form-item-icon"
+              style="color: rgba(0, 0, 0, 0.25)"
+            />
           </template>
         </a-input-password>
       </a-form-item>
@@ -70,7 +76,7 @@ export default defineComponent({
     UserOutlined,
     LockOutlined
   },
-  setup () {
+  setup() {
     const formState = reactive({
       username: '',
       password: '',

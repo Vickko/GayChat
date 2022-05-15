@@ -1,15 +1,13 @@
 <template>
-  <LoginBox class="LoginBox" />
+  <div class="LoginBox">
+  <router-view />
+  </div>
 </template>
 
 <script>
-import LoginBox from '@/components/LoginBox'
-
 export default {
   name: 'LoginView',
-  components: {
-    LoginBox
-  }
+  components: {}
 }
 </script>
 

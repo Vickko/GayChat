@@ -57,19 +57,24 @@ npm ls -g
 ```
 npm ls
 gaychat-client@0.1.0 /Users/vickko/Documents/Code/nosync.nosync/GayChat/src/client/gaychat-client
-├── @babel/core@7.17.10
-├── @babel/eslint-parser@7.17.0
-├── @vue/cli-plugin-babel@5.0.4
-├── @vue/cli-plugin-eslint@5.0.4
-├── @vue/cli-plugin-router@5.0.4
-├── @vue/cli-service@5.0.4
-├── @vue/eslint-config-standard@6.1.0
+├── @vue/cli-plugin-babel@4.5.17
+├── @vue/cli-plugin-eslint@4.5.17
+├── @vue/cli-plugin-router@4.5.17
+├── @vue/cli-service@4.5.17
+├── @vue/compiler-sfc@3.2.33
+├── @vue/eslint-config-standard@5.1.2
+├── ant-design-vue@3.2.3
+├── axios@0.27.2
+├── babel-eslint@10.1.0
 ├── core-js@3.22.4
 ├── eslint-plugin-import@2.26.0
 ├── eslint-plugin-node@11.1.0
-├── eslint-plugin-promise@5.2.0
-├── eslint-plugin-vue@8.7.1
-├── eslint@7.32.0
+├── eslint-plugin-promise@4.3.1
+├── eslint-plugin-standard@4.1.0
+├── eslint-plugin-vue@7.20.0
+├── eslint@6.8.0
+├── less-loader@6.2.0
+├── less@4.1.2
 ├── vue-router@4.0.15
 └── vue@3.2.33
 ```

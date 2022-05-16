@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
+import IndexView from '../views/IndexView.vue'
 import LoginBox from '@/components/LoginBox'
 import ForgetPasswd from '@/components/ForgetPasswd'
 import SignUp from '@/components/SignUp'
@@ -30,6 +31,11 @@ const routes = [
       { path: '/ForgetPasswd', component: ForgetPasswd },
       { path: '/SignUp', component: SignUp }
     ]
+  },
+  {
+    path: '/index',
+    name: 'index',
+    component: IndexView
   }
 ]
 

@@ -107,6 +107,7 @@ gaychat-client@0.1.0 /Users/vickko/Documents/Code/nosync.nosync/GayChat/src/clie
 * 使用标准 HTTP Status Code 标识状态
 * 请求和响应数据统一使用 JSON 格式
 
+### 注册，登录与权限验证
 #### login
 
 * 请求路径：```login```
@@ -131,6 +132,8 @@ gaychat-client@0.1.0 /Users/vickko/Documents/Code/nosync.nosync/GayChat/src/clie
     }
 }
 ```
+
+#### 
 
 
 

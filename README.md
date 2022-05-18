@@ -11,7 +11,6 @@ Simple, elegant web chat application based on <a href="https://socket.io/">Socke
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.6%2B-informational"></a>
 </p>
 
-
 ## 架构
 
 ```
@@ -43,10 +42,12 @@ node v16.15.0
 npm 8.9.0
 
 **注意：npm 镜像源也会对依赖问题造成影响，开发时使用如下镜像源（原淘宝镜像，国内裸连速度较高）**
+
 ```
 npm config set home https://npmmirror.com
 npm config set registry https://registry.npmmirror.com
 ```
+
 ```
 npm ls -g
 /Users/vickko/.nvm/versions/node/v16.15.0/lib
@@ -54,6 +55,7 @@ npm ls -g
 ├── corepack@0.10.0
 └── npm@8.9.0
 ```
+
 ```
 npm ls
 gaychat-client@0.1.0 /Users/vickko/Documents/Code/nosync.nosync/GayChat/src/client/gaychat-client
@@ -80,79 +82,241 @@ gaychat-client@0.1.0 /Users/vickko/Documents/Code/nosync.nosync/GayChat/src/clie
 ```
 
 ## 功能和需求
+
 ### Overall:
+
 1. 用户系统 （注册、登录、登出、删除）
 2. 用户资料 （Profile、status）
 3. 好友关系，群聊
- - 支持添加好友功能及好友在线状态查看
+
+- 支持添加好友功能及好友在线状态查看
+
 4. 聊天系统 （私聊，群聊，发送文件）
- - 实现任意用户间的即时通讯和聊天记录加密存储
- - 支持通讯过程中进行多种文件格式的传递
- - 支持群聊功能
- - 支持在聊天过程中发送表情
- - ~~支持对v佬进行光速开盒~~
+
+- 实现任意用户间的即时通讯和聊天记录加密存储
+- 支持通讯过程中进行多种文件格式的传递
+- 支持群聊功能
+- 支持在聊天过程中发送表情
+- ~~支持对 v 佬进行光速开盒~~
 
 ## TODO:
+
 1. 添加大致功能需求文档
 2. 完善功能需求细分子项
 
 ### 前端：
-1. 开始UI/UX概念原型设计
+
+1. 开始 UI/UX 概念原型设计
 2. 完成 login API 逻辑部分
 
 ### 后端
+
 1. 完善文档中后端部分技术栈内容
 2. 依据文档所述技术栈，在开发服务器上初始化环境
 3. 完成 login API
 
 ## API
 
-* 接口基准地址： ```{{url}}/api/develop/```
-* 使用 Token 鉴定授权状态
-* 使用标准 HTTP Status Code 标识状态
-* 请求和响应数据统一使用 JSON 格式
+- 接口基准地址： `{{url}}/api/develop/`
+- 使用 Token 鉴定授权状态
+- 使用标准 HTTP Status Code 标识状态
+- 请求和响应数据统一使用 JSON 格式
 
 ### 注册，登录与权限验证
-#### login
 
-* 请求路径：```login```
-* 请求方法： ```post```
-* 请求参数：
+#### 用户登录
+
+- 描述： 常规的登录请求，使用 jwt 进行用户鉴权。
+- 请求路径：`login`
+- 请求方法： `post`
+- 请求参数：
+
 ```
 {
     username: '',   // 用户名, not null
     passwd: '',     // 密码, not null
 }
 ```
-* 响应参数：
+
+- 响应参数：
+
 ```
 {
     data: {
-        username: '',   
+        id: '',
         token: '',       // 基于 jwt
     },
     meta: {
         msg: '',        // 请求状态提示
-        status： '',    // HTTP Status Code
+        status: '',    // HTTP Status Code
     }
 }
 ```
 
-#### signup
-#### routeguard
+#### 用户注册
+
+- 描述：常规的注册请求，后台记录请求 ip 一分钟以防止恶意脚本，请求参数是除了id、 vipLevel 和 isDev 外， User 表内所有内容
+- 请求路径：`signup`
+- 请求方法： `post`
+- 请求参数：
+
+```
+{
+    username: '',   // 用户名, not null
+    passwd: '',     // 密码, not null
+    icon_id: '',
+    email: '',
+    sex: '',        //Boolean
+    introduction: '',
+    birth: '',
+}
+```
+
+- 响应参数：
+
+```
+{
+    data: {
+        id: '',
+    },
+    meta: {
+        msg: '',        // 请求状态提示
+        status: '',    // HTTP Status Code
+    }
+}
+```
+
+#### 路由守卫校验
+
+- 描述：客户端请求 index 等需要授权的页面时，请求服务端校验 token 有效性，作为额外的安全保护措施
+- 请求路径：`routeguard`
+- 请求方法： `get`
+- 请求参数：
+
+```
+{}
+```
+
+- 响应参数：
+
+```
+{
+    data: {},
+    meta: {
+        msg: '',        // 请求状态提示
+        status: '',    // HTTP Status Code
+    }
+}
+```
+
 ### 用户管理
-####  查看用户资料
+
+#### 查看用户资料
+
+- 描述：如题，响应参数为 User 表内除了 passwd 外所有内容
+- 请求路径：`userprofile`
+- 请求方法： `get`
+- 请求参数：
+
+```
+{
+    id: '',     //not null
+}
+```
+
+- 响应参数：
+
+```
+{
+    data: {
+    id: '',
+    username: '',
+    icon_id: '',
+    email: '',
+    sex: '',        //Boolean
+    introduction: '',
+    birth: '',
+    },
+    meta: {
+        msg: '',        // 请求状态提示
+        status: '',    // HTTP Status Code
+    }
+}
+```
+
 #### 修改用户资料
-####  注销账号
+
+- 描述：如题，为简化处理并统一请求格式，无论修改多少内容，响应参数一律为除了id、 vipLevel 和 isDev 外， User 表内所有内容
+- 请求路径：`userprofile`
+- 请求方法： `put`
+- 请求参数：
+
+```
+{
+    username: '',
+    passwd: '',
+    icon_id: '',
+    email: '',
+    sex: '',        //Boolean
+    introduction: '',
+    birth: '',
+}
+```
+
+- 响应参数：
+
+```
+{
+    data: {},
+    meta: {
+        msg: '',        // 请求状态提示
+        status: '',    // HTTP Status Code
+    }
+}
+```
+
+#### 注销账号
+
+- 描述：如题，出于安全性考量，会再请求一次 passwd，服务端对 token 和 passwd 做双校验，否则返回 403
+- 请求路径：`userprofile`
+- 请求方法： `delete`
+- 请求参数：
+
+```
+{
+    id: '',
+    passwd: '',
+}
+```
+
+- 响应参数：
+
+```
+{
+    data: {},
+    meta: {
+        msg: '',        // 请求状态提示
+        status: '',    // HTTP Status Code
+    }
+}
+```
 
 ### 关系管理
 
 #### 添加好友
+
 #### 删除好友
+
 #### 查看好友列表
+
 ### 群组管理
+
 #### 创建群组
+
 #### （申请）加入群组
-####  设置管理员
+
+#### 设置管理员
+
 #### 转让群主
+
 #### 查看群组列表

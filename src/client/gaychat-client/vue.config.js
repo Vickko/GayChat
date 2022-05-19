@@ -22,7 +22,7 @@ module.exports = {
   // transpileDependencies: true
 
   // 开发时使用以下配置项开启 vue 代理服务解决 CORS 跨域问题
-  /* devServer: {
+   devServer: {
     proxy: {
       '/api': {
         target: 'http://localhost:3001',
@@ -30,5 +30,5 @@ module.exports = {
         changeOrigin: true
       }
     }
-  } */
+  }
 }

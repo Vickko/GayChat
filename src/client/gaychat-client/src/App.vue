@@ -1,7 +1,7 @@
 <template>
   <div id="_app">
     <router-view />
-    <nav>
+    <nav id="_nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/login">Login</router-link>
@@ -24,6 +24,7 @@
 }
 
 nav {
+  margin-top: 7%;
   padding: 30px;
 }
 

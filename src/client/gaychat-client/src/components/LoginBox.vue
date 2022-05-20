@@ -72,10 +72,10 @@
       </a-form-item>
       <br />
       <div class="login-form-wrap">
-        <router-link class="login-form-forgot" to="/ForgetPasswd"
+        <router-link class="login-form-forgot" to="/forgetPasswd"
           >忘记密码？</router-link
         >
-        <router-link to="/SignUp">注册</router-link>
+        <router-link to="/signUp">注册</router-link>
       </div>
     </a-form>
   </div>

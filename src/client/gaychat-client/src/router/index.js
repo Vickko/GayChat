@@ -22,14 +22,14 @@ const routes = [
       import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
-    path: '/login',
+    path: '/loginView',
     name: 'login',
     component: LoginView,
-    redirect: '/LoginBox',
+    redirect: '/login',
     children: [
-      { path: '/LoginBox', component: LoginBox },
-      { path: '/ForgetPasswd', component: ForgetPasswd },
-      { path: '/SignUp', component: SignUp }
+      { path: '/login', component: LoginBox },
+      { path: '/forgetPasswd', component: ForgetPasswd },
+      { path: '/signUp', component: SignUp }
     ]
   },
   {

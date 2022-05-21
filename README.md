@@ -101,13 +101,13 @@ gaychat-client@0.1.0 /Users/vickko/Documents/Code/nosync.nosync/GayChat/src/clie
 
 ## TODO:
 
-1. 添加大致功能需求文档
-2. 完善功能需求细分子项
+1. 完善功能需求细分子项
 
 ### 前端：
 
-1. 开始 UI/UX 概念原型设计
-2. 完成 login API 逻辑部分
+1. 开始 Index 和其他相关页面的 UI 设计
+2. 细化 Login 页面 UI 实现
+3. 完成后续 API 逻辑原型
 
 ### 后端
 

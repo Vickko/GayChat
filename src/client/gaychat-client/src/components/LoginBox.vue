@@ -104,7 +104,7 @@ export default defineComponent({
     const testlogin = () => {
       message.info('test button touched, sending request to {{url}}/api/develop/testlogin')
       axios
-        .post('/api/develop/testlogin', { username: 'user', passwd: 'passwd' })
+        .post('/api/develop/login/', { username: 'user1', password: 'passwd1' })
         .then((response) => {
           console.log(response.data)
           /* if (

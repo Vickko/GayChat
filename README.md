@@ -102,6 +102,7 @@ gaychat-client@0.1.0 /Users/vickko/Documents/Code/nosync.nosync/GayChat/src/clie
 ## TODO:
 
 1. 完善功能需求细分子项
+2. 文档添加 logout API
 
 ### 前端：
 
@@ -112,8 +113,12 @@ gaychat-client@0.1.0 /Users/vickko/Documents/Code/nosync.nosync/GayChat/src/clie
 ### 后端
 
 1. 完善文档中后端部分技术栈内容
-2. 依据文档所述技术栈，在开发服务器上初始化环境
-3. 完成 login API
+2. 数据库增加 userid-token 表及相关逻辑
+3. login api 增加非法输入及用户名/密码不正确时的返回数据
+4. 增加 token 销毁逻辑 （等待 logout API ref）
+5. 增加 token expire-time 及其更新逻辑
+6. 完成后续 API 接口及相关逻辑
+7. 开始 socket.io 部分相关进度
 
 ## API
 
@@ -134,7 +139,7 @@ gaychat-client@0.1.0 /Users/vickko/Documents/Code/nosync.nosync/GayChat/src/clie
 ```
 {
     username: '',   // 用户名, not null
-    passwd: '',     // 密码, not null
+    password: '',     // 密码, not null
 }
 ```
 
@@ -163,7 +168,7 @@ gaychat-client@0.1.0 /Users/vickko/Documents/Code/nosync.nosync/GayChat/src/clie
 ```
 {
     username: '',   // 用户名, not null
-    passwd: '',     // 密码, not null
+    password: '',     // 密码, not null
     icon_id: '',
     email: '',
     sex: '',        //Boolean

@@ -5,6 +5,7 @@ import IndexView from '../views/IndexView.vue'
 import LoginBox from '@/components/LoginBox'
 import ForgetPasswd from '@/components/ForgetPasswd'
 import SignUp from '@/components/SignUp'
+import ChatBox from '@/components/ChatBox'
 
 const routes = [
   {
@@ -35,7 +36,8 @@ const routes = [
   {
     path: '/index',
     name: 'index',
-    component: IndexView
+    component: IndexView,
+    children: [{ path: '/chat', component: ChatBox }]
   }
 ]
 

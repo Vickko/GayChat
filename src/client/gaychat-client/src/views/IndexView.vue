@@ -11,6 +11,7 @@
         <a-menu-item key="1">nav 1</a-menu-item>
         <a-menu-item key="2">nav 2</a-menu-item>
         <a-menu-item key="3">nav 3</a-menu-item>
+        <a-menu-item key="4" @click="socketTest">socketTest</a-menu-item>
       </a-menu>
     </a-layout-header>
     <a-layout>
@@ -77,6 +78,7 @@
           }"
         >
           Content
+          <router-view />
         </a-layout-content>
         <a-layout-footer style="text-align: center">
           GayChat ©2022
@@ -94,6 +96,9 @@ import {
   FileOutlined
 } from '@ant-design/icons-vue'
 import { defineComponent, ref } from 'vue'
+
+import router from '../router'
+
 export default defineComponent({
   components: {
     PieChartOutlined,
@@ -108,7 +113,12 @@ export default defineComponent({
     }
   },
   setup() {
+    const socketTest = () => {
+      console.log('123')
+      router.push('/chat')
+    }
     return {
+      socketTest,
       selectedKeys1: ref(['2']),
       selectedKeys2: ref(['1']),
       openKeys: ref(['sub1'])

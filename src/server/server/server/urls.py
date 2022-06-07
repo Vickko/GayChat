@@ -20,4 +20,6 @@ from login import views
 urlpatterns = [
     path('api/develop/signup/', views.Signup.as_view()),
     path('api/develop/login/', views.Login.as_view()),
+    path('api/develop/Userprofile/', views.Userprofile.as_view()),
+    path(r'group_found',views.group_found.as_view()),
 ]

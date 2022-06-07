@@ -61,3 +61,66 @@ class Login(APIView):
                 'status': 200,
             }
         })
+
+# 用户注销
+
+class Userprofile(APIView):
+
+    def post(self, request, *args, **kwargs):
+        username = request.data.get('username')
+        password = request.data.get('password')
+        if User.objects.filter(username=username).exists():
+            User.objects.filter(username=username).delete()
+            resp = {
+                'data': {
+                    'id': '',
+                },
+                'meta': {
+                    'msg': '用户注销成功',
+                    'status': 201,
+                },
+            }
+            return Response(resp, 201)
+        else:
+            resp = {
+                'data': {
+                    'id': '',
+                },
+                'meta': {
+                    'msg': '该用户不存在',
+                    'status': 404,
+                },
+            }
+            return Response(resp)
+
+#创建群组
+class group_found(APIView):
+    def post(self, request, *args, **kwargs):
+        owner = request.data.get('owner')
+        name = request.data.get('name')
+        o=User.objects.get(username=owner)  #外键匹配
+        t=models.group.objects.get(owner=o)
+        if models.group.objects.filter(owner=o).exists():
+            resp = {
+                'data': {
+                    'group_id': t.group_id,
+                },
+                'meta': {
+                    'msg': '群组已存在',
+                    'status': 422,
+                },
+            }
+            return Response(resp, 422)
+        else:
+            group = models.group.objects.create(
+                owner=o, name=name)
+            resp = {
+                'data': {
+                    'group_id': models.group.pk,
+                },
+                'meta': {
+                    'msg': '创建成功',
+                    'status': 201,
+                },
+            }
+            return Response(resp)

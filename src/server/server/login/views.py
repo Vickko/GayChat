@@ -7,6 +7,8 @@ from rest_framework.authtoken.views import APIView, AuthTokenSerializer
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 
+from login import models
+
 # 用户注册
 # User.objects.filter(username="Vickko").delete()
 
@@ -98,9 +100,8 @@ class group_found(APIView):
     def post(self, request, *args, **kwargs):
         owner = request.data.get('owner')
         name = request.data.get('name')
-        o=User.objects.get(username=owner)  #外键匹配
-        t=models.group.objects.get(owner=o)
-        if models.group.objects.filter(owner=o).exists():
+        if models.group.objects.filter(name=name).exists():
+            t = models.group.objects.get(name=name)
             resp = {
                 'data': {
                     'group_id': t.group_id,
@@ -113,10 +114,10 @@ class group_found(APIView):
             return Response(resp, 422)
         else:
             group = models.group.objects.create(
-                owner=o, name=name)
+                owner=owner, name=name)
             resp = {
                 'data': {
-                    'group_id': models.group.pk,
+                    'group_id': '',
                 },
                 'meta': {
                     'msg': '创建成功',
@@ -124,3 +125,4 @@ class group_found(APIView):
                 },
             }
             return Response(resp)
+

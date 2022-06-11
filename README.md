@@ -318,6 +318,32 @@ gaychat-client@0.1.0 /Users/vickko/Documents/Code/nosync.nosync/GayChat/src/clie
 
 #### 创建群组
 
+- 描述：常规的创建群组请求，请求参数是owner和name
+- 请求路径：`group_found`
+- 请求方法： `post`
+- 请求参数：
+
+```
+{
+    owner: '',   // 群主名, not null
+    name: '',     // 群组名称, not null
+}
+```
+
+- 响应参数：
+
+```
+{
+    data: {
+        group_id: '',
+    },
+    meta: {
+        msg: '',        // 请求状态提示
+        status: '',    // HTTP Status Code
+    }
+}
+```
+
 #### （申请）加入群组
 
 #### 设置管理员

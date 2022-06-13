@@ -6,8 +6,9 @@ from django.contrib import auth
 from rest_framework.authtoken.views import APIView, AuthTokenSerializer
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
-
+from django.http import JsonResponse
 from login import models
+
 
 # 用户注册
 # User.objects.filter(username="Vickko").delete()
@@ -27,7 +28,7 @@ class Signup(APIView):
                     'status': 422,
                 },
             }
-            return Response(resp,422)
+            return Response(resp, 422)
         else:
             user = User.objects.create_user(
                 username=username, password=password)
@@ -41,6 +42,7 @@ class Signup(APIView):
                 },
             }
             return Response(resp)
+
 
 # 用户登录
 
@@ -63,6 +65,7 @@ class Login(APIView):
                 'status': 200,
             }
         })
+
 
 # 用户注销
 
@@ -95,7 +98,8 @@ class Userprofile(APIView):
             }
             return Response(resp)
 
-#创建群组
+
+# 创建群组
 class group_found(APIView):
     def post(self, request, *args, **kwargs):
         owner = request.data.get('owner')
@@ -125,4 +129,71 @@ class group_found(APIView):
                 },
             }
             return Response(resp)
+
+
+# 添加好友
+class add_friend(APIView):
+    def post(self, request, *args, **kwargs):
+        user_name = request.data.get('user_name')
+        friend_name = request.data.get('friend_name')
+        if models.user_user.objects.filter(user_name=user_name, friend_name=friend_name).exists():
+            resp = {
+                'data': {
+                    'id': '',
+                },
+                'meta': {
+                    'msg': '关系已存在',
+                    'status': 422,
+                },
+            }
+            return Response(resp, 422)
+        else:
+            user_user = models.user_user.objects.create(
+                user_name=user_name, friend_name=friend_name)
+            t = models.user_user.objects.get(user_name=user_name, friend_name=friend_name)
+            resp = {
+                'data': {
+                    'user_name': t.user_name,
+                    'friend_name': t.friend_name,
+                },
+                'meta': {
+                    'msg': '添加成功',
+                    'status': 201,
+                },
+            }
+            return Response(resp)
+
+
+# 删除好友
+class delete_friend(APIView):
+
+    def post(self, request, *args, **kwargs):
+        user_name = request.data.get('user_name')
+        friend_name = request.data.get('friend_name')
+        if models.user_user.objects.filter(user_name=user_name, friend_name=friend_name).exists():
+            models.user_user.objects.filter(user_name=user_name, friend_name=friend_name).delete()
+            resp = {
+                'data': {
+                    'id': '',
+                },
+                'meta': {
+                    'msg': '关系删除成功',
+                    'status': 201,
+                },
+            }
+            return Response(resp, 201)
+        else:
+            resp = {
+                'data': {
+                    'id': '',
+                },
+                'meta': {
+                    'msg': '关系不存在',
+                    'status': 404,
+                },
+            }
+            return Response(resp)
+
+
+
 

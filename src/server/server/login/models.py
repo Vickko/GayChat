@@ -22,3 +22,12 @@ class user_user(models.Model):
         unique_together = (("user_name", "friend_name"),)
 
 
+class user_group(models.Model):
+    user_name = models.CharField(max_length=30, null=False)
+    group_name = models.CharField(max_length=30, null=False)
+    isOwner = models.BooleanField(null=False)
+    isAdmin = models.BooleanField(null=False)
+
+    class Meta:
+        unique_together = (("user_name", "group_name"),)
+

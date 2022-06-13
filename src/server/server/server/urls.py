@@ -24,4 +24,6 @@ urlpatterns = [
     path(r'group_found', views.group_found.as_view()),
     path(r'add_friend', views.add_friend.as_view()),
     path(r'delete_friend', views.delete_friend.as_view()),
+    path(r'join_group', views.join_group.as_view()),
+    path(r'retreat_group', views.retreat_group.as_view()),
 ]

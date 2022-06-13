@@ -1,3 +1,5 @@
+import json
+
 from django.shortcuts import render
 
 # Create your views here.
@@ -8,6 +10,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from django.http import JsonResponse
 from login import models
+from .models import user_user,user_user
 
 
 # 用户注册
@@ -166,7 +169,6 @@ class add_friend(APIView):
 
 # 删除好友
 class delete_friend(APIView):
-
     def post(self, request, *args, **kwargs):
         user_name = request.data.get('user_name')
         friend_name = request.data.get('friend_name')
@@ -195,5 +197,69 @@ class delete_friend(APIView):
             return Response(resp)
 
 
+# 申请加入群组
+class join_group(APIView):
+    def post(self, request, *args, **kwargs):
+        user_name = request.data.get('user_name')
+        group_name = request.data.get('group_name')
+        isOwner = request.data.get('isOwner')
+        isAdmin = request.data.get('isAdmin')
+        if models.user_group.objects.filter(user_name=user_name, group_name=group_name).exists():
+            resp = {
+                'data': {
+                    'id': '',
+                },
+                'meta': {
+                    'msg': '用户已在群组中',
+                    'status': 422,
+                },
+            }
+            return Response(resp, 422)
+        else:
+            user_group = models.user_group.objects.create(
+                user_name=user_name, group_name=group_name, isOwner=isOwner, isAdmin=isAdmin)
+            t = models.user_group.objects.get(user_name=user_name, group_name=group_name, isOwner=isOwner,
+                                              isAdmin=isAdmin)
+            resp = {
+                'data': {
+                    'user_name': t.user_name,
+                    'friend_name': t.group_name,
+                    'isOwner': t.isOwner,
+                    'isAdmin': t.isAdmin,
+                },
+                'meta': {
+                    'msg': '申请加入群组成功',
+                    'status': 201,
+                },
+            }
+            return Response(resp)
 
 
+# 申请退出群组
+class retreat_group(APIView):
+    def post(self, request, *args, **kwargs):
+        user_name = request.data.get('user_name')
+        group_name = request.data.get('group_name')
+        if models.user_group.objects.filter(user_name=user_name, group_name=group_name).exists():
+            models.user_group.objects.filter(user_name=user_name, group_name=group_name).delete()
+            resp = {
+                'data': {
+                    'id': '',
+                },
+                'meta': {
+                    'msg': '退出群组成功',
+                    'status': 201,
+                },
+            }
+            return Response(resp, 201)
+        else:
+            resp = {
+                'data': {
+                    'id': '',
+                },
+                'meta': {
+                    'msg': '用户不在该群组中',
+                    'status': 404,
+                },
+            }
+            return Response(resp)

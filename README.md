@@ -310,8 +310,60 @@ gaychat-client@0.1.0 /Users/vickko/Documents/Code/nosync.nosync/GayChat/src/clie
 
 #### 添加好友
 
+- 描述：常规的添加好友请求，，请求参数是user_name和friend_name
+- 请求路径：`add_friend`
+- 请求方法： `post`
+- 请求参数：
+
+```
+{
+    user_name: '',   // 用户名, not null
+    friend_name: '',     // 要添加的好友名, not null
+ 
+}
+```
+
+- 响应参数：
+
+```
+{
+    data: {
+        id: '',
+    },
+    meta: {
+        msg: '',        // 请求状态提示
+        status: '',    // HTTP Status Code
+    }
+}
+```
 #### 删除好友
 
+- 描述：常规的删除好友请求，，请求参数是user_name和friend_name
+- 请求路径：`add_friend`
+- 请求方法： `post`
+- 请求参数：
+
+```
+{
+    user_name: '',   // 用户名, not null
+    friend_name: '',     // 要添加的好友名, not null
+ 
+}
+```
+
+- 响应参数：
+
+```
+{
+    data: {
+        id: '',
+    },
+    meta: {
+        msg: '',        // 请求状态提示
+        status: '',    // HTTP Status Code
+    }
+}
+```
 #### 查看好友列表
 
 ### 群组管理

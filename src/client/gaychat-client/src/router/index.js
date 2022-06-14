@@ -1,10 +1,11 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import LoginView from '../views/LoginView.vue'
-import IndexView from '../views/IndexView.vue'
+import HomeView from '../views/HomeView'
+import LoginView from '../views/LoginView'
+import IndexView from '../views/IndexView'
 import LoginBox from '@/components/LoginBox'
 import ForgetPasswd from '@/components/ForgetPasswd'
 import SignUp from '@/components/SignUp'
+import ChatView from '../views/test_ChatView'
 import ChatBox from '@/components/ChatBox'
 
 const routes = [
@@ -37,7 +38,14 @@ const routes = [
     path: '/index',
     name: 'index',
     component: IndexView,
-    children: [{ path: '/chat', component: ChatBox }]
+    children: [
+      {
+        path: '/chat',
+        name: 'chat',
+        component: ChatView,
+        children: [{ path: '/chatbox', name: 'chatbox', component: ChatBox }]
+      }
+    ]
   }
 ]
 

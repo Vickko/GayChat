@@ -1,20 +1,73 @@
 <template>
   <div id="container">
-    <form id="form" action="">
-      <input id="input" autocomplete="off" /><button>Send</button>
-    </form>
     <ul id="messages">
       <li v-for="(msg, index) in messages" :key="index">
         {{ msg }}
       </li>
+      <form id="form" action="">
+        <input id="input" autocomplete="off" /><button>Send</button>
+      </form>
     </ul>
-
+    <div id="messages1">
+      <a-tooltip placement="right" visible="true">
+        <template #title>prompt text</template>
+        <a-avatar :size="48">
+          <template #icon><UserOutlined /></template>
+        </a-avatar>
+      </a-tooltip>
+      <a-tooltip placement="right" visible="true">
+        <template #title>prompt text</template>
+        <a-avatar :size="48">
+          <template #icon><UserOutlined /></template>
+        </a-avatar>
+      </a-tooltip>
+      <a-tooltip placement="right" visible="true">
+        <template #title>prompt text</template>
+        <a-avatar :size="48">
+          <template #icon><UserOutlined /></template>
+        </a-avatar>
+      </a-tooltip>
+      <a-tooltip placement="right" visible="true">
+        <template #title>prompt text</template>
+        <a-avatar :size="48">
+          <template #icon><UserOutlined /></template>
+        </a-avatar>
+      </a-tooltip>
+    </div>
+    <div id="messages2">
+      <a-tooltip placement="left" visible="true">
+        <template #title>prompt text</template>
+        <a-avatar :size="48">
+          <template #icon><UserOutlined /></template>
+        </a-avatar>
+      </a-tooltip>
+      <a-tooltip placement="left" visible="true">
+        <template #title>prompt text</template>
+        <a-avatar :size="48">
+          <template #icon><UserOutlined /></template>
+        </a-avatar>
+      </a-tooltip>
+      <a-tooltip placement="left" visible="true">
+        <template #title>prompt text</template>
+        <a-avatar :size="48">
+          <template #icon><UserOutlined /></template>
+        </a-avatar>
+      </a-tooltip>
+      <a-tooltip placement="left" visible="true">
+        <template #title>prompt text</template>
+        <a-avatar :size="48">
+          <template #icon><UserOutlined /></template>
+        </a-avatar>
+      </a-tooltip>
+    </div>
   </div>
 </template>
 
 <script>
 import { io } from 'socket.io-client'
+import { UserOutlined } from '@ant-design/icons-vue'
 export default {
+  components: { UserOutlined },
   data() {
     return {
       messages: []
@@ -28,7 +81,7 @@ export default {
     console.log(this.messages)
     console.log(this)
     var that = this
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', (e) => {
       e.preventDefault()
       if (input.value) {
         socket.emit('chat message', input.value)
@@ -36,7 +89,7 @@ export default {
       }
     })
 
-    socket.on('chat message', function(msg) {
+    socket.on('chat message', (msg) => {
       console.log(msg)
       console.log(that.messages)
       that.messages.push(msg)
@@ -47,7 +100,15 @@ export default {
 
 <style style='less' scoped>
 #container {
-  height: 100%;
+  height: 98%;
+  width: 78%;
+  background-color: #d3adf7;
+  position: relative;
+  left: 100%;
+  transform: translate(-101%, 0);
+  top: -97%;
+  border-radius: 12px;
+  box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.2);
 }
 body {
   margin: 0;
@@ -60,6 +121,8 @@ body {
   background: rgba(0, 0, 0, 0.15);
   padding: 0.25rem;
   position: relative;
+  top: 100%;
+  transform: translate(0px, -100%);
   bottom: 0;
   left: 0;
   right: 0;
@@ -67,6 +130,7 @@ body {
   height: 3rem;
   box-sizing: border-box;
   backdrop-filter: blur(10px);
+  border-radius: 12px;
 }
 #input {
   border: none;
@@ -90,6 +154,7 @@ body {
 
 #messages {
   list-style-type: none;
+  height: 100%;
   padding: 0;
 }
 #messages > li {
@@ -97,5 +162,17 @@ body {
 }
 #messages > li:nth-child(odd) {
   background: #efefef;
+}
+#messages1 {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  transform: translate(0px, -250%);
+}
+#messages2 {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  transform: translate(95%, -250%);
 }
 </style>
